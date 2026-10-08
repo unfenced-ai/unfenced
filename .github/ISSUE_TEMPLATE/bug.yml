@@ -1,0 +1,22 @@
+name: Client bug
+description: Report a reproducible SDK or MCP connector problem.
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: What happened?
+      description: Include expected behavior. Never include API keys or private page content.
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Reproduction steps
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Package version, Node.js version, and MCP client
+    validations:
+      required: true

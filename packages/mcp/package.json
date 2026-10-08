@@ -1,0 +1,80 @@
+{
+  "name": "@unfenced-ai/mcp",
+  "version": "0.1.2",
+  "description": "MCP server for Unfenced - full-web access for AI agents: fetch any page as a real user sees it and get clean, LLM-ready markdown back, with a real-browser fallback for JS-heavy and protected sites.",
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "agent",
+    "scraping",
+    "web",
+    "markdown",
+    "claude",
+    "cursor"
+  ],
+  "license": "MIT",
+  "homepage": "https://unfenced.ai",
+  "bugs": {
+    "url": "https://github.com/unfenced-ai/unfenced/issues"
+  },
+  "type": "module",
+  "engines": {
+    "node": ">=22.12"
+  },
+  "bin": {
+    "unfenced-mcp": "./dist/cloud.mjs",
+    "unfenced-mcp-http": "./dist/http.mjs"
+  },
+  "main": "./dist/tools.js",
+  "types": "./dist/tools.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/tools.d.ts",
+      "import": "./dist/tools.js",
+      "require": "./dist/tools.js",
+      "default": "./dist/tools.js"
+    },
+    "./tools": {
+      "types": "./dist/tools.d.ts",
+      "import": "./dist/tools.js",
+      "require": "./dist/tools.js",
+      "default": "./dist/tools.js"
+    }
+  },
+  "files": [
+    "dist/cloud.mjs",
+    "dist/http.mjs",
+    "dist/tools.js",
+    "dist/tools.d.ts",
+    "dist/tools/*.js",
+    "dist/tools/*.d.ts",
+    "README.md",
+    "LICENSE"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json && pnpm run bundle:cloud && pnpm run bundle:http",
+    "bundle:cloud": "esbuild src/cloud.ts --bundle --platform=node --format=esm --outfile=dist/cloud.mjs --external:@modelcontextprotocol/sdk --external:zod",
+    "bundle:http": "esbuild src/http.ts --bundle --platform=node --format=esm --outfile=dist/http.mjs --external:@modelcontextprotocol/sdk --external:zod",
+    "typecheck": "tsc -b tsconfig.json && tsc -p tsconfig.test.json",
+    "test": "vitest run",
+    "start": "node dist/cloud.mjs",
+    "prepublishOnly": "pnpm --dir ../.. verify"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.30.0",
+    "@unfenced-ai/sdk": "workspace:*",
+    "zod": "^3.25.0"
+  },
+  "devDependencies": {
+    "esbuild": "^0.28.2",
+    "vitest": "^4.1.11"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/unfenced-ai/unfenced.git",
+    "directory": "packages/mcp"
+  }
+}

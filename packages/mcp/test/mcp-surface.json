@@ -1,0 +1,156 @@
+{
+  "fetch_page": {
+    "params": ["force", "forceRender", "format", "identify", "locale", "maxWords", "url"],
+    "enums": {
+      "format": ["html", "json", "markdown", "text"],
+      "identify": ["agent", "auto", "stealth"]
+    }
+  },
+  "fetch_batch": {
+    "params": ["format", "locale", "maxWords", "urls"],
+    "enums": {
+      "format": ["html", "json", "markdown", "text"]
+    }
+  },
+  "get_page_links": {
+    "params": ["maxLinks", "scope", "url"],
+    "enums": {
+      "scope": ["all", "content"]
+    }
+  },
+  "open_page": {
+    "params": ["account", "intent", "url"],
+    "enums": {
+      "intent": ["act", "read"]
+    }
+  },
+  "switch_account": {
+    "params": ["account", "sessionId"],
+    "enums": {}
+  },
+  "whoami": {
+    "params": ["sessionId"],
+    "enums": {}
+  },
+  "act": {
+    "params": [
+      "acceptDialog",
+      "append",
+      "at",
+      "brief",
+      "code",
+      "confirm",
+      "content",
+      "credential",
+      "dialogText",
+      "download",
+      "expect",
+      "filename",
+      "gone",
+      "key",
+      "kind",
+      "modifiers",
+      "ms",
+      "on",
+      "ref",
+      "scale",
+      "sessionId",
+      "submit",
+      "text",
+      "to",
+      "toRef",
+      "url",
+      "values",
+      "via",
+      "window",
+      "within"
+    ],
+    "enums": {
+      "kind": [
+        "back",
+        "click",
+        "copy",
+        "dblclick",
+        "drag",
+        "fill_otp",
+        "fill_secret",
+        "fill_totp",
+        "forward",
+        "hover",
+        "navigate",
+        "paste",
+        "press",
+        "reload",
+        "rightclick",
+        "scroll",
+        "select",
+        "switch",
+        "type",
+        "upload",
+        "wait",
+        "zoom"
+      ],
+      "modifiers": ["Control", "Meta", "Shift"]
+    }
+  },
+  "observe_page": {
+    "params": ["match", "maxControls", "maxLinks", "sessionId"],
+    "enums": {}
+  },
+  "extract_page": {
+    "params": ["format", "sessionId"],
+    "enums": {
+      "format": ["html", "json", "markdown", "text"]
+    }
+  },
+  "see_page": {
+    "params": ["marks", "sessionId"],
+    "enums": {}
+  },
+  "fill_form": {
+    "params": ["fields", "sessionId"],
+    "enums": {}
+  },
+  "park_page": {
+    "params": ["minutes", "reason", "sessionId"],
+    "enums": {}
+  },
+  "read_download": {
+    "params": ["filename", "sessionId"],
+    "enums": {}
+  },
+  "close_page": {
+    "params": ["sessionId"],
+    "enums": {}
+  },
+  "list_permissions": {
+    "params": [],
+    "enums": {}
+  },
+  "pending_approvals": {
+    "params": [],
+    "enums": {}
+  },
+  "connect_site": {
+    "params": ["host", "label", "mode"],
+    "enums": {
+      "mode": ["credential", "permission"]
+    }
+  },
+  "list_credentials": {
+    "params": [],
+    "enums": {}
+  },
+  "remember": {
+    "params": ["key", "value"],
+    "enums": {}
+  },
+  "recall": {
+    "params": ["key"],
+    "enums": {}
+  },
+  "forget": {
+    "params": ["key"],
+    "enums": {}
+  }
+}

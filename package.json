@@ -1,0 +1,28 @@
+{
+  "name": "unfenced-clients",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@11.19.0",
+  "engines": {
+    "node": ">=22.19"
+  },
+  "scripts": {
+    "build": "pnpm -r build",
+    "typecheck": "pnpm -r typecheck",
+    "test": "pnpm -r --workspace-concurrency=1 test",
+    "lint": "eslint packages examples",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "docs-check": "node scripts/docs-check.mjs",
+    "verify": "pnpm build && pnpm typecheck && pnpm lint && pnpm test && pnpm format:check && pnpm docs-check"
+  },
+  "devDependencies": {
+    "@types/node": "^22.15.0",
+    "typescript": "5.9.3",
+    "vitest": "^4.1.11",
+    "prettier": "^3.9.6",
+    "eslint": "^10.9.1",
+    "@eslint/js": "^10.0.1",
+    "typescript-eslint": "^8.69.0"
+  }
+}

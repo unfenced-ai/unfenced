@@ -1,0 +1,50 @@
+{
+  "name": "@unfenced-ai/sdk",
+  "version": "0.1.2",
+  "description": "Typed client for Unfenced - fetch any page as clean content and drive a real browser (observe, click, type, extract).",
+  "keywords": [
+    "agent",
+    "browser-automation",
+    "scraping",
+    "fetch",
+    "sdk"
+  ],
+  "license": "MIT",
+  "homepage": "https://unfenced.ai",
+  "bugs": {
+    "url": "https://github.com/unfenced-ai/unfenced/issues"
+  },
+  "type": "module",
+  "engines": {
+    "node": ">=22.12"
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.js",
+      "default": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc -b tsconfig.json && tsc -p tsconfig.test.json",
+    "test": "vitest run",
+    "prepublishOnly": "pnpm --dir ../.. verify"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/unfenced-ai/unfenced.git",
+    "directory": "packages/sdk"
+  }
+}
