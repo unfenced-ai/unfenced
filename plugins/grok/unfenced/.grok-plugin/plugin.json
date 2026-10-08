@@ -1,0 +1,10 @@
+{
+  "name": "unfenced",
+  "version": "0.1.0",
+  "description": "Read specific web pages, compare up to 20 URLs, and extract links through the hosted Unfenced service. Requires an admitted Unfenced account during private preview.",
+  "author": { "name": "Unfenced", "url": "https://unfenced.ai" },
+  "homepage": "https://unfenced.ai/mcp",
+  "repository": "https://github.com/unfenced-ai/unfenced",
+  "license": "MIT",
+  "keywords": ["unfenced", "unfenced web reading"]
+}

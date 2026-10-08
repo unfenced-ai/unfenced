@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "unfenced": {
+      "type": "http",
+      "url": "https://unfenced.ai/api/mcp?profile=reading"
+    }
+  }
+}
