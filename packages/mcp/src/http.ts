@@ -212,14 +212,14 @@ const httpServer = createServer(
     requestTimeout: BODY_READ_TIMEOUT_MS,
   },
   (req: IncomingMessage, res: ServerResponse) => {
-    void handle(req, res).catch((error) => {
+    void handle(req, res).catch(() => {
       if (!res.headersSent) {
         res.writeHead(500, { "content-type": "application/json" });
       }
       res.end(
         JSON.stringify({
           jsonrpc: "2.0",
-          error: { code: -32603, message: error instanceof Error ? error.message : String(error) },
+          error: { code: -32603, message: "Internal server error" },
           id: null,
         }),
       );

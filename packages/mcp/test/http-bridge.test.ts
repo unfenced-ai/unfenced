@@ -101,6 +101,29 @@ afterAll(() => {
 const rpc = (method: string, id = 1): string =>
   JSON.stringify({ jsonrpc: "2.0", id, method, params: {} });
 
+it.skipIf(!built)("unexpected errors do not expose exception details", async () => {
+  const response = await new Promise<{ status: number | undefined; body: string }>(
+    (resolve, reject) => {
+      const request = httpRequest(base, { path: "http://[" }, (res) => {
+        let body = "";
+        res.setEncoding("utf8");
+        res.on("data", (chunk: string) => {
+          body += chunk;
+        });
+        res.on("end", () => resolve({ status: res.statusCode, body }));
+      });
+      request.on("error", reject);
+      request.end();
+    },
+  );
+  expect(response.status).toBe(500);
+  expect(JSON.parse(response.body)).toEqual({
+    jsonrpc: "2.0",
+    error: { code: -32603, message: "Internal server error" },
+    id: null,
+  });
+});
+
 const HANDSHAKE = JSON.stringify({
   jsonrpc: "2.0",
   id: 1,
