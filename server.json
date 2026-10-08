@@ -9,30 +9,6 @@
     "source": "github"
   },
   "websiteUrl": "https://unfenced.ai",
-  "packages": [
-    {
-      "registryType": "npm",
-      "identifier": "@unfenced-ai/mcp",
-      "version": "0.1.3",
-      "transport": { "type": "stdio" },
-      "environmentVariables": [
-        {
-          "name": "UNFENCED_URL",
-          "description": "Unfenced API base URL",
-          "default": "https://unfenced.ai/api",
-          "isRequired": true,
-          "format": "string"
-        },
-        {
-          "name": "UNFENCED_TOKEN",
-          "description": "API key from the Unfenced dashboard",
-          "isRequired": true,
-          "isSecret": true,
-          "format": "string"
-        }
-      ]
-    }
-  ],
   "remotes": [
     {
       "type": "streamable-http",

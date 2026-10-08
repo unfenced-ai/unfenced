@@ -23,9 +23,16 @@ const readme = fs.readFileSync("README.md", "utf8");
 const manifest = JSON.parse(fs.readFileSync("packages/mcp/package.json", "utf8"));
 const registry = JSON.parse(fs.readFileSync("server.json", "utf8"));
 assert.equal(manifest.mcpName, registry.name);
-assert.equal(manifest.version, registry.version);
-assert.equal(registry.packages[0].version, manifest.version);
-assert.equal(registry.packages[0].identifier, manifest.name);
+assert.ok(registry.version);
+assert.ok(
+  registry.remotes.some(
+    (remote) => remote.type === "streamable-http" && remote.url === "https://unfenced.ai/api/mcp",
+  ),
+);
+for (const pkg of registry.packages ?? []) {
+  assert.equal(pkg.version, manifest.version);
+  assert.equal(pkg.identifier, manifest.name);
+}
 assert.ok(
   fs.readFileSync("packages/mcp/src/tools.ts", "utf8").includes(`version: "${manifest.version}"`),
 );

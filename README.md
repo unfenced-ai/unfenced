@@ -24,6 +24,8 @@ Use the dashboard's **Connect** instructions for your client's authentication fl
 Clients that accept custom headers can use `Authorization: Bearer <UNFENCED_TOKEN>`.
 Keep API keys out of URLs, prompts, and committed configuration.
 
+See the [remote connection guide](./docs/REMOTE-MCP.md) for setup and troubleshooting.
+
 ### Local stdio connector
 
 Requires Node.js **22.12+**. Add this to your MCP client's configuration,
