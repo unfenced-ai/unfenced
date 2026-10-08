@@ -1,0 +1,31 @@
+name: Publish clients
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: npm-release
+  cancel-in-progress: false
+jobs:
+  publish:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: pnpm/action-setup@d9184bf108216479bc5a137cc391f4d7b14c870b # v6.1.0
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: 24
+          registry-url: https://registry.npmjs.org
+          package-manager-cache: false
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm verify
+      - run: pnpm audit --prod --audit-level high
+      - run: pnpm pack-check
+      - name: Publish verified SDK archive
+        run: node scripts/publish-archive.mjs sdk
+      - name: Publish verified MCP archive
+        run: node scripts/publish-archive.mjs mcp

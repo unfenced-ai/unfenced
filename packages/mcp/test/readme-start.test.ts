@@ -22,14 +22,10 @@ import { npxResolves, published } from "./manifest.js";
 
 describe("the published quickstart", () => {
   it("can be started by the command its own README gives", () => {
-    // `npx -y @unfenced-ai/mcp` - the snippet on the npm page and in four other
-    // documents - cannot start this package: npm looks for a bin named after
-    // the unscoped package (`mcp`), finds two bins with different targets and
-    // neither called that, and throws "could not determine executable to run"
-    // before installing anything. The docs now use the `-p` form the dashboard
-    // has always generated, and this is what keeps the two honest: if the bare
-    // form is ever made to work, this test says so and the docs can shorten.
-    expect(npxResolves(published), "npx <package> resolves a bin directly").toBe(false);
+    // The alias matches the unscoped npm package name, so registry clients can
+    // launch it with npx while existing explicit unfenced-mcp commands still work.
+    expect(npxResolves(published), "npx <package> resolves a bin directly").toBe(true);
+    expect(published.bin?.mcp).toBe(published.bin?.["unfenced-mcp"]);
     expect(Object.keys(published.bin ?? {})).toContain("unfenced-mcp");
   });
 });

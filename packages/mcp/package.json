@@ -1,6 +1,7 @@
 {
   "name": "@unfenced-ai/mcp",
-  "version": "0.1.2",
+  "version": "0.1.3",
+  "mcpName": "ai.unfenced/browser",
   "description": "MCP server for Unfenced - full-web access for AI agents: fetch any page as a real user sees it and get clean, LLM-ready markdown back, with a real-browser fallback for JS-heavy and protected sites.",
   "keywords": [
     "mcp",
@@ -23,6 +24,7 @@
   },
   "bin": {
     "unfenced-mcp": "./dist/cloud.mjs",
+    "mcp": "./dist/cloud.mjs",
     "unfenced-mcp-http": "./dist/http.mjs"
   },
   "main": "./dist/tools.js",

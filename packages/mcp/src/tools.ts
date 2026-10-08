@@ -48,7 +48,7 @@ import { toAction, missingField, actFailure } from "./tools/act-fold.js";
 import { registerPagePreview } from "./tools/page-preview.js";
 import { oauthTools } from "./tools/oauth-tools.js";
 
-export const SERVER_INFO = { name: "unfenced", version: "0.1.0" } as const;
+export const SERVER_INFO = { name: "unfenced", version: "0.1.3" } as const;
 
 /** Public fetch failure codes returned by the hosted API. */
 type FailureCode =

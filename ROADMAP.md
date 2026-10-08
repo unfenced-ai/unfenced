@@ -9,8 +9,8 @@ Planned work, without promised dates:
 
 Use [issues](https://github.com/unfenced-ai/unfenced/issues) for concrete requests.
 
-The [registry manifest](./server.json) is a prepared remote listing, not evidence of
-publication. Domain ownership must be verified before publishing `ai.unfenced/browser`.
-The npm installation method will be added after a client release includes the matching
-`mcpName` and its explicit executable configuration. See the
+The [registry manifest](./server.json) describes both remote and npm connections.
+Domain ownership must be verified before publishing `ai.unfenced/browser`, and the
+matching npm version must be available first. The `mcp` executable alias supports
+standard registry installation commands. See the
 [official manifest specification](https://github.com/modelcontextprotocol/registry/blob/main/docs/reference/server-json/generic-server-json.md).

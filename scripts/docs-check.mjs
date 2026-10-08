@@ -5,7 +5,7 @@ import assert from "node:assert/strict";
 const root = process.cwd();
 function walk(dir) {
   return fs.readdirSync(dir, { withFileTypes: true }).flatMap((entry) => {
-    if ([".git", "node_modules", "dist"].includes(entry.name)) return [];
+    if ([".git", "node_modules", "dist", "artifacts"].includes(entry.name)) return [];
     const file = path.join(dir, entry.name);
     return entry.isDirectory() ? walk(file) : [file];
   });
@@ -21,6 +21,14 @@ for (const file of walk(root).filter((file) => file.endsWith(".md"))) {
 }
 const readme = fs.readFileSync("README.md", "utf8");
 const manifest = JSON.parse(fs.readFileSync("packages/mcp/package.json", "utf8"));
+const registry = JSON.parse(fs.readFileSync("server.json", "utf8"));
+assert.equal(manifest.mcpName, registry.name);
+assert.equal(manifest.version, registry.version);
+assert.equal(registry.packages[0].version, manifest.version);
+assert.equal(registry.packages[0].identifier, manifest.name);
+assert.ok(
+  fs.readFileSync("packages/mcp/src/tools.ts", "utf8").includes(`version: "${manifest.version}"`),
+);
 assert.ok(readme.includes(manifest.name));
 assert.ok(readme.includes('"UNFENCED_URL": "https://unfenced.ai/api"'));
 assert.ok(readme.includes('"UNFENCED_TOKEN": "YOUR_UNFENCED_API_KEY"'));
@@ -28,6 +36,7 @@ assert.ok(readme.includes(Object.keys(manifest.bin)[0]));
 for (const pkg of ["sdk", "mcp"]) {
   const p = JSON.parse(fs.readFileSync(`packages/${pkg}/package.json`, "utf8"));
   assert.equal(p.license, "MIT");
+  assert.equal(p.version, manifest.version);
   assert.ok(
     !Object.keys({ ...p.dependencies, ...p.devDependencies }).some((name) =>
       name.startsWith("@unfenced/"),

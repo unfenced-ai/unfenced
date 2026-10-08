@@ -3,12 +3,36 @@
   "name": "ai.unfenced/browser",
   "title": "Unfenced",
   "description": "Full-web browser access for AI agents: read pages and act on authorized sites through MCP.",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "repository": {
     "url": "https://github.com/unfenced-ai/unfenced",
     "source": "github"
   },
   "websiteUrl": "https://unfenced.ai",
+  "packages": [
+    {
+      "registryType": "npm",
+      "identifier": "@unfenced-ai/mcp",
+      "version": "0.1.3",
+      "transport": { "type": "stdio" },
+      "environmentVariables": [
+        {
+          "name": "UNFENCED_URL",
+          "description": "Unfenced API base URL",
+          "default": "https://unfenced.ai/api",
+          "isRequired": true,
+          "format": "string"
+        },
+        {
+          "name": "UNFENCED_TOKEN",
+          "description": "API key from the Unfenced dashboard",
+          "isRequired": true,
+          "isSecret": true,
+          "format": "string"
+        }
+      ]
+    }
+  ],
   "remotes": [
     {
       "type": "streamable-http",

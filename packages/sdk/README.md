@@ -1,7 +1,9 @@
 # @unfenced-ai/sdk
 
 A typed, zero-runtime-dependency client for [Unfenced](https://unfenced.ai).
-Requires Node.js **22.12+** and an authorized Unfenced account.
+Requires Node.js **22.12+** and an authorized Unfenced account. Unfenced is in private
+preview: installing the SDK does not grant hosted access. Get an API key from the
+dashboard's Connect panel and set it locally as `UNFENCED_TOKEN`.
 
 ```sh
 npm install @unfenced-ai/sdk
@@ -35,6 +37,8 @@ Use fresh control references from observations when acting. The service enforces
 permissions and credential handling. Do not place your API key in frontend code.
 
 The package exports `Unfenced`, `UnfencedError`, `Session`, and the public API types.
-See [runnable examples](../../examples/README.md) and [Security](../../SECURITY.md).
+See [runnable examples](https://github.com/unfenced-ai/unfenced/tree/main/examples)
+and [Security](https://github.com/unfenced-ai/unfenced/blob/main/SECURITY.md).
 
-[MIT license](./LICENSE)
+[Source and issues](https://github.com/unfenced-ai/unfenced) ·
+[MIT license](https://github.com/unfenced-ai/unfenced/blob/main/LICENSE)
