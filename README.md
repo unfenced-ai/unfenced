@@ -26,6 +26,13 @@ Keep API keys out of URLs, prompts, and committed configuration.
 
 See the [remote connection guide](./docs/REMOTE-MCP.md) for setup and troubleshooting.
 
+### Grok Build plugin
+
+The [Grok Build plugin](./plugins/grok/unfenced/README.md) connects to Unfenced's
+hosted page-reading profile. It provides page fetching, bounded comparisons,
+and links without browser actions or credential entry. Marketplace publication
+is pending; the package README includes local evaluation instructions.
+
 ### Local stdio connector
 
 Requires Node.js **22.12+**. Add this to your MCP client's configuration,
